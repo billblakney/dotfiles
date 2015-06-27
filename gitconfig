@@ -1,5 +1,5 @@
 [user]
-   name = Bill Blakney
+   name = billblakney
    email = b.blakney@cox.net
 [core]
    autocrlf = false
@@ -33,3 +33,4 @@
    added = yellow
    changed = green
    untracked = cyan
+   modified = white
