@@ -30,17 +30,34 @@ unset TEMP
 
 # Or use TMPDIR instead
 # export TMPDIR=/tmp
-
-# Added by Bill
-PATH=${PATH}:/cygdrive/c/Program\ Files/Vim/vim74
-PATH=${PATH}:/cygdrive/m/workspace/perlscripts/cg
-PATH=${PATH}:/cygdrive/c/tools/apache-ant-1.9.4/bin
-PATH=${PATH}:/cygdrive/c/tools/ctags58
-PATH=${PATH}:/cygdrive/c/tools/eclipse
-PATH=${PATH}:/cygdrive/c/tools/Qt/5.3/mingw482_32/bin
-PATH=${PATH}:/cygdrive/c/Program\ Files\ \(x86\)/VideoLan/VLC:/usr/sbin
-PATH=${PATH}:~/util
-PATH=.:${PATH}
+#
+# Get OS type.
+#
+if [ "$(uname)" == "Darwin" ]; then
+   echo "Detected Mac OS"
+   OS="Mac"
+elif [ "$(expr substr $(uname -s) 1 6)" == "CYGWIN" ]; then
+   echo "Detected Cygwin OS"
+   OS="Cygwin"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+   echo "Detected Linux OS"
+   OS="Linux"
+else
+   echo "OS not detected!"
+fi
+#
+if [ $OS == "Cygwin" ]; then
+   PATH=${PATH}:/cygdrive/c/Program\ Files/Vim/vim74
+   PATH=${PATH}:/cygdrive/m/workspace/perlscripts/cg
+   PATH=${PATH}:/cygdrive/c/tools/apache-ant-1.9.4/bin
+   PATH=${PATH}:/cygdrive/c/tools/ctags58
+   PATH=${PATH}:/cygdrive/c/tools/eclipse
+   PATH=${PATH}:/cygdrive/c/tools/Qt/5.3/mingw482_32/bin
+   PATH=${PATH}:/cygdrive/c/Program\ Files\ \(x86\)/VideoLan/VLC:/usr/sbin
+   PATH=${PATH}:~/util
+   PATH=.:${PATH}
+fi
+#
 
 # Shell Options
 # #############
@@ -132,14 +149,16 @@ export HISTCONTROL="ignoreboth"
 # alias la='ls -A'                              # all but . and ..
 # alias l='ls -CF'                              #
 #
-alias ls='ls -1gABFG --color=always --file-type --group-directories-first'
-alias v='~/scripts/vimwrapper.sh' 
-#
-# aliases related to environment/configuration
-#
-alias s='source ~/.bashrc' 
-alias qb='~/scripts/vimwrapper.sh ~/.bashrc'
-alias qv='~/scripts/vimwrapper.sh c:/Program\ Files/Vim/_vimrc'
+if [ $OS == "Cygwin" ]; then
+   alias ls='ls -1gABFG --color=always --file-type --group-directories-first'
+   alias v='~/scripts/vimwrapper.sh' 
+   #
+   # aliases related to environment/configuration
+   #
+   alias s='source ~/.bashrc' 
+   alias qb='~/scripts/vimwrapper.sh ~/.bashrc'
+   alias qv='~/scripts/vimwrapper.sh c:/Program\ Files/Vim/_vimrc'
+fi
 alias h='history'
 alias hc='history -c'
 #
@@ -169,22 +188,24 @@ source ~/.bash.alias.git
 # Some example functions
 # function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; }
 
-# These lines fix some bash bugs related to processing of the '\r' character.
-# I ran into these bugs when compiling log4cxx and found this solution on
-# the web. -Bill Blakney, jan2013
-export SHELLOPTS
-set -o igncr
+if [ $OS != "Mac" ]; then
+   # These lines fix some bash bugs related to processing of the '\r' character.
+   # I ran into these bugs when compiling log4cxx and found this solution on
+   # the web. -Bill Blakney, jan2013
+   export SHELLOPTS
+   set -o igncr
+fi
 
 # I added this so that I can run gitk from the bash shell. Need to start
 # the X11 server first, though, before it can be run.
 export DISPLAY=:0.0
 
-# Added by Bill, mar2013, to allow gvim command "vert diffsplit <fname>" to work.
-export TMP=~/tmp
-export TEMP=~/tmp
-export TMPDIR=~/tmp
-export TEMPDIR=~/tmp
-# Was having some problem at one time and so added the GIT_DISCOVERY.. export.
-# But I don't think it was related to the problem, and coudl probably be removed.
-export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
-export JAVA_HOME=c:/Program\ Files/Java/jdk1.7.0_67
+if [ $OS == "Cygwin" ]; then
+   # Added by Bill, mar2013, to allow gvim command "vert diffsplit <fname>" to work.
+   export TMP=~/tmp
+   export TEMP=~/tmp
+   export TMPDIR=~/tmp
+   export TEMPDIR=~/tmp
+   #
+   export JAVA_HOME=c:/Program\ Files/Java/jdk1.7.0_67
+fi
