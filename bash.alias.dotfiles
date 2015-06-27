@@ -1,0 +1,4 @@
+# aliases: dotfiles
+alias ddiff='./diff.sh'
+alias dget='./get.sh'
+alias dput='./put.sh'
