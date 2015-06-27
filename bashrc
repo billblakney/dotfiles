@@ -159,8 +159,8 @@ alias gvs='gvim -S Session.vim &'
 alias jj='dojacobe.sh'
 #
 # source alias files
-source .bash.alias.dotfiles
-source .bash.alias.git
+source ~/.bash.alias.dotfiles
+source ~/.bash.alias.git
 
 
 # Functions
