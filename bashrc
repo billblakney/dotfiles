@@ -131,21 +131,20 @@ export HISTCONTROL="ignoreboth"
 # alias ll='ls -l'                              # long list
 # alias la='ls -A'                              # all but . and ..
 # alias l='ls -CF'                              #
+#
 alias ls='ls -1gABFG --color=always --file-type --group-directories-first'
 alias v='~/scripts/vimwrapper.sh' 
+#
 # aliases related to environment/configuration
+#
 alias s='source ~/.bashrc' 
 alias qb='~/scripts/vimwrapper.sh ~/.bashrc'
 alias qv='~/scripts/vimwrapper.sh c:/Program\ Files/Vim/_vimrc'
 alias h='history'
 alias hc='history -c'
-# aliases: git
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
-alias gco='git checkout'
-alias gm='git merge'
+#
 # directory/project specific aliases
+#
 alias ws='cd; cd ~/workspace'
 alias rd='cd; cd ~/workspace/rundat'
 alias of='cd; cd ~/workspace/ofagent'
@@ -153,9 +152,15 @@ alias sw1='cd ~/workspace/ofagent/switches/roadm1'
 alias sw2='cd ~/workspace/ofagent/switches/roadm2'
 alias sw3='cd ~/workspace/ofagent/switches/roadm3'
 alias x3='cd /cygdrive/n/sonar'
+#
 # aliases: other
+#
 alias gvs='gvim -S Session.vim &'
 alias jj='dojacobe.sh'
+#
+# source alias files
+source .bash.alias.dotfiles
+source .bash.alias.git
 
 
 # Functions
