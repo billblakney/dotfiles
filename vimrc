@@ -10,6 +10,9 @@ if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 "
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" detect OS
+""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win32") || has('win64')
    "echom "detected Windows OS"
    let $MYOS = "Windows"
@@ -25,6 +28,15 @@ else
       endif
    endif
 endif
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fix to make 'gvim -d f1 f2' work.
+" Maybe not needed past vim 7.4.
+""""""""""""""""""""""""""""""""""""""""""""""""""
+if( $MYOS == "Windows" )
+   set shell=c:\\tools\\cygwin64\\bin\\bash.exe shellcmdflag=-c shellxquote=\"
+endif
+"
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " mouse behavior: xterm or mswin
