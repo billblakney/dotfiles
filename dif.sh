@@ -6,9 +6,16 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function usage {
-   echo "Usage: ${0##*/} [<dotfile> [<dotfile> ...]]"
-   echo "  Use zero args to diff all dotfiles"
-   echo "  The format of a dotfile is \"dot.*\""
+   echo "Usage: ${0##*/} [-q] [-v] [-h] [<dotfile_list>]"
+   echo "   -h = print help"
+   echo "   -q = do diffs with -q (quite mode)"
+   echo "   -v = verbose output"
+   echo "   <dotfile_list> is list of local dotfiles."
+   echo "      A local dotfile may be specified with or without the \"dot.\"prefix."
+   echo "      For example, the command \"dif.sh vimrc\" is equivalent to the command"
+   echo "      \"dif.sh dot.vimrc\""
+   echo ""
+   echo "If no dotfiles are specified, all dotfiles will be diffed"
    exit 1
 }
 
@@ -32,9 +39,11 @@ args=($@)
 # command-line flags
 qregex='-q'
 hregex='-h'
+vregex='-v'
 
 # command-line settings
 qflag=""
+vflag=0
 
 #-------------------------
 # process command-line flags
@@ -47,9 +56,17 @@ do
       exit 1
    elif [[ $arg =~ $qregex ]]; then
       qflag="-q"
-      args=(${args[@]/$qflag/})
+      args=(${args[@]/$qregex/})
+   elif [[ $arg =~ $vregex ]]; then
+      vflag=1
+      args=(${args[@]/$vregex/})
    fi
 done
+
+# test code
+#echo numargs: ${#args[@]}
+#echo args: ${args[@]}
+#exit 1
 
 #-------------------------
 # set dotfiles list
@@ -84,7 +101,9 @@ do
    elif [[ ! -e $homename ]]; then
       error "Couldn't find $homename"
    else
-      #echo diff $qflag $localname $homename
+      if [ $vflag -eq 1 ]; then
+         echo diff $qflag $localname $homename
+      fi
       diff $qflag $localname $homename
    fi
 done
