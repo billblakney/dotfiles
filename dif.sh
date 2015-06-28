@@ -15,7 +15,13 @@ function usage {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function error {
-   echo $1
+   echo ERROR: $1
+}
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function warn {
+   echo WARN: $1
 }
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31,7 +37,8 @@ hregex='-h'
 qflag=""
 
 #-------------------------
-# process command-line args
+# process command-line flags
+# remove them from args
 #-------------------------
 for arg in "${args[@]}"
 do
@@ -46,6 +53,7 @@ done
 
 #-------------------------
 # set dotfiles list
+# if args is empty, do all dotfiles
 #-------------------------
 if [ "${#args[@]}" -eq 0 ]; then
    dotfiles=($(find . -name 'dot.*'))
@@ -63,7 +71,7 @@ do
    # Real dotfiles begin with "dot." prefix, but can be specified
    # on the command-line arguments with or without that prefix.
    if [[ $dotfile =~ $regex ]]; then
-      root="${BASH_REMATCH[1]}"
+      root=${BASH_REMATCH[1]}
    else
       root=$dotfile
    fi
@@ -72,9 +80,9 @@ do
    homename=../.$root
 
    if [[ ! -e $localname ]]; then
-      echo "ERROR: Couldn't find $localname"
+      error "Couldn't find $localname"
    elif [[ ! -e $homename ]]; then
-      echo "ERROR: Couldn't find $homename"
+      error "Couldn't find $homename"
    else
       #echo diff $qflag $localname $homename
       diff $qflag $localname $homename
