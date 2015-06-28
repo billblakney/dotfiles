@@ -1,4 +1,7 @@
 #!/bin/bash
+############################
+# Diff local dotfiles with home directory.
+############################
 
 function usage {
    echo "Usage: ${0##*/} [<dotfile> [<dotfile> ...]]"

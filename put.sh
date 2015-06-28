@@ -2,27 +2,46 @@
 ############################
 # Copy dotfiles to home directory.
 ############################
-if [ "$#" -lt 1 ]; then
-    echo "Usage: ${0##*/} dot.bashrc ..."
-    exit 1
+
+function usage {
+   echo "Usage: ${0##*/} [<dotfile> [<dotfile> ...]]"
+   echo "  Use zero args to diff all dotfiles"
+   echo "  The format of a dotfile is \"dot.*\""
+   exit 1
+}
+
+function error {
+   echo $1
+}
+
+if [ "$#" -eq 1 ] && [ "$1" == "-h" ]
+then
+   usage
 fi
 
-# Regular expression for ./dot.*
-re='dot\.(.*)'
+if [ "$#" -eq 0 ]; then
+   dotfiles=($(find . -name 'dot.*'))
+else
+   dotfiles=( "$@" )
+fi
 
-for arg in "$@"
+regex='dot\.(.*)'
+
+for dotfile in "${dotfiles[@]}"
 do
-   localname="$arg"
-   if [[ $localname =~ $re ]]; then
-      root="${BASH_REMATCH[1]}";
-      homename="../.$root"
-      if [[ -e $localname ]]; then
-         echo cp $localname $homename
-         cp $localname $homename
-      else
-         echo "WARNING: File not found: $localname"
-      fi
+   if [[ $dotfile =~ $regex ]]; then
+      root="${BASH_REMATCH[1]}"
    else
-      echo "WARNING: Invalid request: $localname"
+      root=$dotfile
+   fi
+
+   localname=dot.$root
+   homename=../.$root
+
+   if [[ ! -e $localname ]]; then
+      echo "ERROR: Couldn't find $localname"
+   else
+      echo cp $localname $homename
+      cp $localname $homename
    fi
 done
