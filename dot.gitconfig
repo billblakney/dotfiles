@@ -1,10 +1,10 @@
 [user]
    name = billblakney
-   email = b.blakney@cox.net
+   email = spam.blakney@cox.net
 [core]
    autocrlf = false
    filemode = false
-   excludesfile = /Users/jongretar/.gitignore
+   excludesfile = /home/bill/.gitignore
 [apply]
    whitespace = nowarn
 [alias]
@@ -14,8 +14,10 @@
    br = branch
    ba = branch -a
    co = checkout
+   cob = checkout -b
    df = diff
    lg = log -p
+   ll = log -l
 [color]
    branch = auto
    diff = auto
