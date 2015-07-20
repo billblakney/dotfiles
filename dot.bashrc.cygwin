@@ -32,3 +32,9 @@ export JAVA_HOME=c:/Program\ Files/Java/jdk1.7.0_67
 # I added this so that I can run gitk from the bash shell. Need to start
 # the X11 server first, though, before it can be run.
 export DISPLAY=:0.0
+#
+# These lines fix some bash bugs related to processing of the '\r' character.
+# I ran into these bugs when compiling log4cxx and found this solution on
+# the web. -Bill Blakney, jan2013
+export SHELLOPTS
+set -o igncr
