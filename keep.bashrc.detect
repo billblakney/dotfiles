@@ -1,0 +1,29 @@
+###############################################################################
+# Get OS type.
+###############################################################################
+if [ "$(uname)" == "Darwin" ]; then
+   echo "Detected Mac OS"
+   OS="Mac"
+elif [ "$(expr substr $(uname -s) 1 6)" == "CYGWIN" ]; then
+   echo "Detected Cygwin OS"
+   OS="Cygwin"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+   echo "Detected Linux OS"
+   OS="Linux"
+else
+   echo "OS not detected!"
+fi
+#
+###############################################################################
+# Cygwin stuff
+###############################################################################
+if [ $OS == "Cygwin" ]; then
+   source ~/.bashrc.cygwin
+fi
+#
+###############################################################################
+# Mac stuff
+###############################################################################
+if [ $OS != "Mac" ]; then
+   source ~/.bashrc.mac
+fi

@@ -65,7 +65,7 @@ elseif( $MYOS == "Windows" )
    "set guifont=Lucida_Sans_Typewriter:h10:cANSI
    "set guifont=Courier_New:h10:cANSI
 elseif( $MYOS == "Linux" )
-   colorscheme murphy
+   "colorscheme murphy
    "colorscheme darkblue
 else
    "

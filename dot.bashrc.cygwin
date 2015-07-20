@@ -1,0 +1,34 @@
+PATH=${PATH}:/cygdrive/c/Program\ Files/Vim/vim74
+PATH=${PATH}:/cygdrive/m/workspace/perlscripts/cg
+PATH=${PATH}:/cygdrive/c/tools/apache-ant-1.9.4/bin
+PATH=${PATH}:/cygdrive/c/tools/ctags58
+PATH=${PATH}:/cygdrive/c/tools/eclipse
+PATH=${PATH}:/cygdrive/c/tools/Qt/5.3/mingw482_32/bin
+PATH=${PATH}:/cygdrive/c/Program\ Files\ \(x86\)/VideoLan/VLC:/usr/sbin
+PATH=${PATH}:~/util
+PATH=.:${PATH}
+#
+alias ls='ls -1gABFG --color=always --file-type --group-directories-first'
+alias v='~/scripts/vimwrapper.sh' 
+#
+# aliases related to environment/configuration
+#
+alias s='source ~/.bashrc' 
+alias qb='~/scripts/vimwrapper.sh ~/.bashrc'
+alias qv='~/scripts/vimwrapper.sh c:/Program\ Files/Vim/_vimrc'
+#
+alias x3='cd /cygdrive/n/sonar'
+#
+# Added by Bill, mar2013, to allow gvim command "vert diffsplit <fname>" to work.
+#unset TMP   # test vert and remove if not needed
+#unset TEMP  # test vert and remove if not needed
+export TMP=~/tmp
+export TEMP=~/tmp
+export TMPDIR=~/tmp
+export TEMPDIR=~/tmp
+#
+export JAVA_HOME=c:/Program\ Files/Java/jdk1.7.0_67
+#
+# I added this so that I can run gitk from the bash shell. Need to start
+# the X11 server first, though, before it can be run.
+export DISPLAY=:0.0

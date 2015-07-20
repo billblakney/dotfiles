@@ -1,0 +1,5 @@
+# These lines fix some bash bugs related to processing of the '\r' character.
+# I ran into these bugs when compiling log4cxx and found this solution on
+# the web. -Bill Blakney, jan2013
+export SHELLOPTS
+set -o igncr

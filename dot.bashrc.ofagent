@@ -1,0 +1,4 @@
+alias of='cd; cd ~/workspace/ofagent'
+alias sw1='cd ~/workspace/ofagent/switches/roadm1'
+alias sw2='cd ~/workspace/ofagent/switches/roadm2'
+alias sw3='cd ~/workspace/ofagent/switches/roadm3'
