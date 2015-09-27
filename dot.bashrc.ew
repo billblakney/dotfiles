@@ -1,7 +1,8 @@
-export _EW=~/workspace/iEW2
+export _EW=~/workspace/ewTab
 alias ew='cd $_EW'
-alias ewbin='cd $_EW/bin'
-alias ewmain='cd $_EW/MainWin'
-alias ewpanel='cd $_EW/EwArea/src'
 alias ewapi='cd $_EW/api'
-alias ewdm='cd $_EW/EwDataManager/src'
+alias ewbin='cd $_EW/bin'
+alias ewpanel='cd $_EW/EwPanel/src'
+alias ewstore='cd $_EW/EwStorage/src'
+alias ewmain='cd $_EW/Main'
+alias ewtest='cd $_EW/Test'
