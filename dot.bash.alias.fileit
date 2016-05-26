@@ -1,8 +1,0 @@
-alias bit='fileit -b'
-alias jit='fileit -j'
-alias lsb='ls ~/backyard'
-alias lsj='ls ~/junkyard'
-alias rmb='rm ~/backyard/*'
-alias rmj='rm ~/junkyard/*'
-alias cdb='cd ~/backyard/'
-alias cdj='cd ~/junkyard/'
