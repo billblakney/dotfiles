@@ -1,0 +1,9 @@
+export _EW=~/workspace/ewTab
+alias ew='cd $_EW'
+alias ewapi='cd $_EW/api'
+alias ewbin='cd $_EW/bin'
+alias ewpanel='cd $_EW/EwPanel/src'
+alias ewstore='cd $_EW/EwStorage/src'
+alias ewmain='cd $_EW/Main'
+alias ewtest='cd $_EW/Test'
+export LOGGER_CONFIG_FILE=$_EW/Test/log4cxx.properties

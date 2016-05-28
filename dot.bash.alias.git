@@ -1,8 +1,13 @@
 # aliases: git
 alias gs='git status'
 alias ga='git add'
+alias gaa='git add .'
 alias gc='git commit'
 alias gco='git checkout'
 alias gm='git merge'
 alias gpull='git pull origin master'
 alias gpush='git push origin master'
+alias gl='git log -1'
+alias gls='git log -1 --stat'
+alias glog='git log'
+alias glogs='git log --stat'
