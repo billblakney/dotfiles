@@ -6,6 +6,7 @@ PATH=${PATH}:/cygdrive/c/tools/eclipse
 PATH=${PATH}:/cygdrive/c/tools/Qt/5.3/mingw482_32/bin
 PATH=${PATH}:/cygdrive/c/Program\ Files\ \(x86\)/VideoLan/VLC:/usr/sbin
 PATH=${PATH}:~/util
+PATH=${PATH}:~/scripts
 PATH=.:${PATH}
 #
 alias ls='ls -1gABFG --color=always --file-type --group-directories-first'
@@ -27,7 +28,7 @@ export TEMP=~/tmp
 export TMPDIR=~/tmp
 export TEMPDIR=~/tmp
 #
-export JAVA_HOME=c:/Program\ Files/Java/jdk1.7.0_67
+export JAVA_HOME=c:/Program\ Files/Java/jdk1.8.0_77
 #
 # I added this so that I can run gitk from the bash shell. Need to start
 # the X11 server first, though, before it can be run.
